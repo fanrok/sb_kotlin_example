@@ -68,7 +68,7 @@ class User private constructor(
         phone: String?,
         salt: String,
         hash: String
-    ) : this(firstName=firstName, lastName=lastName, rawPhone = phone, email = email, meta = mapOf("auth" to "csv")) {
+    ) : this(firstName=firstName, lastName=lastName, rawPhone = phone, email = email, meta = mapOf("src" to "csv")) {
         println("Secondary csv constructor called")
         this.salt = salt
         this.passwordHash = hash
