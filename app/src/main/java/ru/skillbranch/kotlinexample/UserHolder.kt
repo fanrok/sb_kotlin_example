@@ -67,7 +67,7 @@ object UserHolder {
             val fullName = array[0]
 //            val email = array[1]
             var email:String? = null
-            if(!array[3].isBlank()){
+            if(!array[1].isBlank()){
                 email = array[1]
             }
             val arraySH = array[2].split(":")
@@ -77,11 +77,19 @@ object UserHolder {
             if(!array[3].isBlank()){
                 phone = array[3]
             }
-            val user = User.csvUser(fullName=fullName, email=email, phone=phone, salt=salt, hash=hash)
-                .also { user ->
-                    map[user.login] = user
-                }
-            out.add(user)
+            if(email!=null || phone!=null) {
+                val user = User.csvUser(
+                        fullName = fullName,
+                        email = email,
+                        phone = phone,
+                        salt = salt,
+                        hash = hash
+                    )
+                    .also { user ->
+                        map[user.login] = user
+                    }
+                out.add(user)
+            }
         }
         return out
     }
