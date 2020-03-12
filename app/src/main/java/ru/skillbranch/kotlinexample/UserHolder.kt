@@ -59,8 +59,8 @@ object UserHolder {
         map[phone2]?.changeAccessCode()
     }
 
-    fun importUsers(list: List<String>): List<String> {
-        val out = mutableListOf<String>()
+    fun importUsers(list: List<String>): List<User> {
+        val out = mutableListOf<User>()
         list.onEach {
             val array = it.split(";")
             //Полное имя пользователя; email; соль:хеш пароля; телефон
@@ -74,7 +74,7 @@ object UserHolder {
                 .also { user ->
                     map[user.login] = user
                 }
-            out.add(user.userInfo)
+            out.add(user)
         }
         return out
     }
