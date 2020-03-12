@@ -47,7 +47,7 @@ object UserHolder {
                         map[user.login] = user
                     }
             } else {
-                throw IllegalArgumentException("This phone is bad")
+                throw IllegalArgumentException("Enter a valid phone number starting with a + and containing 11 digits")
             }
         } else {
             throw IllegalArgumentException("A user with this phone already exists")
