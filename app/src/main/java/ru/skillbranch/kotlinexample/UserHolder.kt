@@ -65,11 +65,18 @@ object UserHolder {
             val array = it.split(";")
             //Полное имя пользователя; email; соль:хеш пароля; телефон
             val fullName = array[0]
-            val email = array[1]
+//            val email = array[1]
+            var email:String? = null
+            if(!array[3].isBlank()){
+                email = array[1]
+            }
             val arraySH = array[2].split(":")
             val salt = arraySH[0]
             val hash = arraySH[1]
-            val phone = array[3]
+            var phone:String? = null
+            if(!array[3].isBlank()){
+                phone = array[3]
+            }
             val user = User.csvUser(fullName=fullName, email=email, phone=phone, salt=salt, hash=hash)
                 .also { user ->
                     map[user.login] = user
